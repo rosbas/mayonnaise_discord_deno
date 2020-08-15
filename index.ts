@@ -8,4 +8,4 @@ import Client from "./src/client/Client.ts";
 
 const client = new Client();
 
-client.login("NzQyMjY4MDU2OTYwNDk5ODM0.XzDo_w.zvSSse7CTSCCyCXVxOtGY8c4fDY");
+client.login("NzQyMjY4MDU2OTYwNDk5ODM0.XzDo_w.BF62glURLOmrKy4ngAVGABU3bR8");
