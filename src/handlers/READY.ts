@@ -16,5 +16,5 @@ export default function (client: Client, payload: Payload) {
     user.bot,
     user.avatar,
   );
-  console.log(client);
+  client.emit("ready");
 }

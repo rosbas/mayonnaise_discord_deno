@@ -31,8 +31,12 @@ export default class WebSocketManager {
             break;
         }
         if (event) {
-          const { default: module } = await import(`../handlers/${event}.ts`);
-          module(this.client, payload);
+          try {
+            const { default: module } = await import(`../handlers/${event}.ts`);
+            module(this.client, payload);
+          } catch (err) {
+            console.log(err);
+          }
         }
       }
     } catch (err) {
