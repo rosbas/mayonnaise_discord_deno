@@ -10,8 +10,11 @@ client.on("ready", () => {
   console.log("Bot has logged in.");
 });
 
-client.on("message", (message: any) => {
+client.on("message", async (message: any) => {
   console.log(message.content);
+  if (message.content === "sup") {
+    await createMessage("Wut sup peeps!", message.channel_id);
+  }
 });
 
 async function createMessage(content: string, channelId: string) {
@@ -22,7 +25,7 @@ async function createMessage(content: string, channelId: string) {
 
   const headers = {
     "Content-Type": "application/json",
-    "Authorization": `Bot ${client.token}`,
+    "Authorization": `Bot ${HiddenValue.TOKEN}`,
   };
 
   const response = await fetch(
@@ -34,5 +37,5 @@ async function createMessage(content: string, channelId: string) {
     },
   );
   const json = await response.json();
-  console.log(json);
+  // console.log(json);
 }

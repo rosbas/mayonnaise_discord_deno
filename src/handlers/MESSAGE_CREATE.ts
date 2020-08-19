@@ -3,4 +3,5 @@ import { Payload } from "../interfaces/Payload.ts";
 
 export default function (client: Client, payload: Payload) {
   client.emit("message", payload.d);
+  console.log("once?");
 }
