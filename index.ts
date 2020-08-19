@@ -1,6 +1,7 @@
 import Client from "./src/client/Client.ts";
 import { Constants } from "./src/constants/Constants.ts";
 import { HiddenValue } from "./src/constants/Secret.ts";
+import { add, pickedCard } from "./function.ts";
 
 const client = new Client();
 
@@ -11,13 +12,35 @@ client.on("ready", () => {
 });
 
 client.on("message", async (message: any) => {
-  console.log(message.content);
-  if (message.content === "sup") {
-    await createMessage("Wut sup peeps!", message.channel_id);
+  let msg = message.content.split(" ");
+  if (msg[0] === "mayo") {
+    switch (msg[1]) {
+      case "sup":
+        await createMessage("Wut sup peeps!", message.channel_id);
+        break;
+      default:
+        await createMessage("Mayo desu~~", message.channel_id);
+        break;
+    }
   }
 });
 
-async function createMessage(content: string, channelId: string) {
+//   if (message.content === "sup") {
+//     await createMessage("Wut sup peeps!", message.channel_id);
+//   } else if (message.content === "roll") {
+//     await createMessage(
+//       Math.floor(Math.random() * 6),
+//       message.channel_id,
+//     );
+//   } else if (message.content === "drawcard") {
+//     await createMessage(
+//       `Draw: ${pickedCard.card} of ${pickedCard.suit}`,
+//       message.channel_id,
+//     );
+//   }
+// });
+
+async function createMessage(content: string | number, channelId: string) {
   const data = {
     "content": content,
     "tts": false,
@@ -37,5 +60,4 @@ async function createMessage(content: string, channelId: string) {
     },
   );
   const json = await response.json();
-  // console.log(json);
 }
